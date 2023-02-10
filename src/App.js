@@ -1,10 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import ClientSignup from './components/ClientSignup';
+import Home from './components/Home';
+import { BrowserRouter, Switch, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<><Home /></>}></Route>
+        <Route path='/clientsignup' element={<><ClientSignup /></>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
