@@ -18,7 +18,7 @@ function BasicExample() {
         </Card.Text>
         
         <Button variant="primary">Apply for Work</Button>
-        <PlumbingIcon style={{marginLeft:'50px'}} />
+        <PlumbingIcon style={{marginLeft:'125px'}} />
       </Card.Body>
     </Card>
     </div>

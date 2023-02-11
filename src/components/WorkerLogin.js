@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./ClientSignup.css";
+import "./WorkerLogin.css";
 // import { useDispatch } from 'react-redux';
 // import { signUpUser } from '../redux/actions/formActions';
 import { Connect } from 'react-redux';
@@ -30,13 +30,13 @@ function ClientLogin() {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        email: '',
+        
         phone: '',
+        
         password: '',
 
     });
-    const imageData = new FormData();
-    const [imageUpload, setImageUpload] = useState(false);
+    
 
     // const dispatch = useDispatch();
 
@@ -46,38 +46,19 @@ function ClientLogin() {
     const handleEmailChange = (event) => {
         setFormData({ ...formData, email: event.target.value });
     }
-    const handleFirstNameChange = (event) => {
-        setFormData({ ...formData, firstName: event.target.value });
-    }
-    const handleLastNameChange = (event) => {
-        setFormData({ ...formData, lastName: event.target.value });
-    }
+    
     const handlePhoneChange = (event) => {
         setFormData({ ...formData, phone: event.target.value });
     }
 
 
-    const handleYearChange = (event) => {
-        setFormData({ ...formData, year: event.target.value })
-    }
-    const handleDeptChange = (event) => {
-        setFormData({ ...formData, dept: event.target.value })
-    }
-    const handleDivChange = (event) => {
-        setFormData({ ...formData, class: event.target.value })
-    }
+    
 
 
     const handlePasswordChange = (event) => {
         setFormData({ ...formData, password: event.target.value });
     }
-    const handleIdImageChange = async (event) => {
-        setFormData({ ...formData, image: event.target.files[0] });
-
-        imageData.append('file', formData.image);
-        console.log(formData.image.name);
-        setImageUpload(true);
-    }
+    
 
     // const handleSubmit = (event) => {
     //     event.preventDefault();
@@ -125,10 +106,11 @@ function ClientLogin() {
 
         const formdata = new FormData();
         formdata.append('email', formData.email);
-        
+        formdata.append('firstname', formData.firstName);
+        formdata.append('lastname', formData.lastName);
         formdata.append('phone', formData.phone);
         formdata.append('password', formData.password);
-        
+        formdata.append('file', formData.image);
 
         axios.post('http://localhost:5000/api/client/register', formdata, {
             headers: {
@@ -147,13 +129,9 @@ function ClientLogin() {
             /> */}
 
             <div className='signup_container'>
-                <h1>Client-Login</h1>
+                <h1>Worker-Login</h1>
 
                 <form >
-
-                    <div className='inputField'>
-                        <TextField className='inputField' fullWidth id="outlined-basic" value={formData.email} onChange={handleEmailChange} label="Email" variant="outlined" />
-                    </div>
 
                     <div className='inputField'>
                         <TextField className='inputField' fullWidth id="outlined-basic" value={formData.phone} onChange={handlePhoneChange} label="Phone-no" variant="outlined" />
@@ -162,30 +140,13 @@ function ClientLogin() {
                     <div className='inputField'>
                         <TextField fullWidth type="password" className='inputField' id="outlined-basic" value={formData.password} onChange={handlePasswordChange} label="Password" variant="outlined" />
                     </div>
-
-
-
-
-
-                    {/* <h5>E-mail</h5>
-                    <input type='text' value={formData.email} onChange={handleEmailChange} />
-
-                    <h5>First Name</h5>
-                    <input type='text' value={formData.firstName} onChange={handleFirstNameChange} />
-
-                    <h5>Last Name</h5>
-                    <input type='text' value={formData.lastName} onChange={handleLastNameChange} />
-
-                    <h5>Password</h5>
-                    <input type='password' value={formData.password} onChange={handlePasswordChange}></input> */}
-
                     <br></br>
                     <br></br>
+
 
                 </form>
 
-                <p>by signing-in you agree to AMAZON FAKE CLONE conditions of Use and sale. Please see our Privacy Notice, our Cookies Noties and our Interest-Based Ads </p>
-
+                
                 <Button variant="contained" onClick={submitSignupForm}>
                     Login
                 </Button>

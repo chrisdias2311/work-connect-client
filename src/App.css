@@ -40,3 +40,10 @@
 .Card-container{
   display: flex;
 }
+@media (max-width:390px) {
+  .Card-container{
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+    margin-left: 10px;
+  }
+}
