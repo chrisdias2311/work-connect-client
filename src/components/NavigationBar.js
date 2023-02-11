@@ -173,7 +173,7 @@ export default function NavigationBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Skill-Work
           </Typography>
           <Search>
             <SearchIconWrapper>
