@@ -113,9 +113,9 @@ function ClientSignup() {
                     </div>
 
                     <div className='inputField'>
-                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" />
-                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" />
-                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" />
+                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" label="Electrian" />
+                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" label="Electrian"/>
+                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" label="Electrian"/>
                     </div>
 
                     <div className='inputField'>
