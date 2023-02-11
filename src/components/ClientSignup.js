@@ -191,7 +191,7 @@ function ClientSignup() {
                     <h5>Password</h5>
                     <input type='password' value={formData.password} onChange={handlePasswordChange}></input> */}
 
-                    <h5>Upload SFIT Identity card</h5>
+                    <h5>Upload valid Govt. Identity card</h5>
                     <Button variant="contained" value={formData.image} component="label" onChange={handleIdImageChange}>
                         Upload
                         <input hidden type="file" />

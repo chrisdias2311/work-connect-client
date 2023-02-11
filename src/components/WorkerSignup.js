@@ -30,10 +30,10 @@ function ClientSignup() {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        email: '',
         firstName: '',
         lastName: '',
         phone: '',
+        expertise: '',
         image: '',
         password: '',
 
@@ -43,9 +43,6 @@ function ClientSignup() {
 
     // const dispatch = useDispatch();
 
-    const handlePidChange = (event) => {
-        setFormData({ ...formData, pid: event.target.value });
-    }
     const handleEmailChange = (event) => {
         setFormData({ ...formData, email: event.target.value });
     }
@@ -58,7 +55,9 @@ function ClientSignup() {
     const handlePhoneChange = (event) => {
         setFormData({ ...formData, phone: event.target.value });
     }
-    
+
+    // expertise function
+
 
     const handlePasswordChange = (event) => {
         setFormData({ ...formData, password: event.target.value });
@@ -71,19 +70,19 @@ function ClientSignup() {
         setImageUpload(true);
     }
 
+
     const submitSignupForm = (e) => {
         e.preventDefault();
         console.log("Signup called");
 
         const formdata = new FormData();
-        formdata.append('email', formData.email);
         formdata.append('firstname', formData.firstName);
         formdata.append('lastname', formData.lastName);
         formdata.append('phone', formData.phone);
         formdata.append('password', formData.password);
         formdata.append('file', formData.image);
 
-        axios.post('http://localhost:5000/api/client/register', formdata, {
+        axios.post('http://localhost:5000/api/worker/register', formdata, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -94,19 +93,11 @@ function ClientSignup() {
 
     return (
         <div className='signup'>
-            {/* <img
-                className='signup_logo'
-                src={Logo}
-            /> */}
 
             <div className='signup_container'>
                 <h1>Sign-up</h1>
 
                 <form >
-
-                    <div className='inputField'>
-                        <TextField className='inputField' fullWidth id="outlined-basic" value={formData.email} onChange={handleEmailChange} label="Email" variant="outlined" />
-                    </div>
 
                     <div className='inputField'>
                         <TextField className='inputField' fullWidth id="outlined-basic" value={formData.firstName} onChange={handleFirstNameChange} label="Firstname" variant="outlined" />
@@ -120,27 +111,15 @@ function ClientSignup() {
                         <TextField className='inputField' fullWidth id="outlined-basic" value={formData.phone} onChange={handlePhoneChange} label="Phone-no" variant="outlined" />
                     </div>
 
+                    {/* expertise */}
+
                     <div className='inputField'>
                         <TextField fullWidth type="password" className='inputField' id="outlined-basic" value={formData.password} onChange={handlePasswordChange} label="Password" variant="outlined" />
                     </div>
 
 
 
-
-
-                    {/* <h5>E-mail</h5>
-                    <input type='text' value={formData.email} onChange={handleEmailChange} />
-
-                    <h5>First Name</h5>
-                    <input type='text' value={formData.firstName} onChange={handleFirstNameChange} />
-
-                    <h5>Last Name</h5>
-                    <input type='text' value={formData.lastName} onChange={handleLastNameChange} />
-
-                    <h5>Password</h5>
-                    <input type='password' value={formData.password} onChange={handlePasswordChange}></input> */}
-
-                    <h5>Upload SFIT Identity card</h5>
+                    <h5>Upload valid Govt. Identity card</h5>
                     <Button variant="contained" value={formData.image} component="label" onChange={handleIdImageChange}>
                         Upload
                         <input hidden type="file" />
