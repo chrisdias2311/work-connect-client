@@ -22,6 +22,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { checkboxClasses } from '@mui/material';
 
 function ClientSignup() {
 
@@ -111,7 +112,11 @@ function ClientSignup() {
                         <TextField className='inputField' fullWidth id="outlined-basic" value={formData.phone} onChange={handlePhoneChange} label="Phone-no" variant="outlined" />
                     </div>
 
-                    {/* expertise */}
+                    <div className='inputField'>
+                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" />
+                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" />
+                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" />
+                    </div>
 
                     <div className='inputField'>
                         <TextField fullWidth type="password" className='inputField' id="outlined-basic" value={formData.password} onChange={handlePasswordChange} label="Password" variant="outlined" />
