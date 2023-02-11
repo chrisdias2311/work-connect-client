@@ -1,5 +1,6 @@
 import './App.css';
 import ClientSignup from './components/ClientSignup';
+import WorkerSignup from './components/ClientSignup';
 import Home from './components/Home';
 import { BrowserRouter, Switch, Routes, Route } from "react-router-dom";
 
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path='/' element={<><Home /></>}></Route>
         <Route path='/clientsignup' element={<><ClientSignup /></>}></Route>
+        <Route path='/workersignup' element={<><WorkerSignup /></>}></Route>
       </Routes>
     </BrowserRouter>
   );
