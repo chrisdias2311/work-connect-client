@@ -18,7 +18,7 @@ function TaskCard() {
         </Card.Text>
         
         <Button variant="primary">Apply for Work</Button>
-        <PlumbingIcon style={{marginLeft:'125px'}} />
+        <PlumbingIcon style={{marginLeft:'100px'}} />
       </Card.Body>
     </Card>
     </div>

@@ -10,18 +10,18 @@ const Footer = () => {
             <div class="row">
               <div class="col-sm-12 col-md-6">
                 <h6>About</h6>
-                <p class="text-justify About-text">By students at FRCRCE - <i>The major motivation for choosing this topic is to learn the nuances of how bill payment works and the problems related to it.</i> Our goal is Designing and implementing an online Electricity Bill Payment System and fixing the issues related to it.</p>
+                <p class="text-justify About-text">By students at FRCRCE - </p>
               </div>
 
               <div class="col-xs-6 col-md-3">
                 <h6>Services</h6>
                 <ul class="footer-links">
-                  <li><a href="">Apply New Connection</a></li>
-                  <li><a href="">Pay Bills</a></li>
-                  <li><a href="">Submit Meter Reading</a></li>
-                  <li><a href="">Split Bills</a></li>
-                  <li><a href="">Register Complaint</a></li>
-                  <li><a href="">Bill History</a></li>
+                  <li><a href=""></a></li>
+                  <li><a href=""></a></li>
+                  <li><a href=""></a></li>
+                  <li><a href=""></a></li>
+                  <li><a href=""></a></li>
+                  <li><a href=""></a></li>
                 </ul>
               </div>
 
