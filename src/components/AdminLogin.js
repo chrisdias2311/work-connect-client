@@ -31,7 +31,7 @@ import Checkbox from '@mui/material/Checkbox';
 function ClientSignup() {
 
     const [formData, setFormData] = useState({
-        UserName: '',
+        email: '',
         password: '',
 
     });
@@ -43,7 +43,7 @@ function ClientSignup() {
     //     setFormData({ ...formData, email: event.target.value });
     // }
     const handleUserNameChange = (event) => {
-        setFormData({ ...formData, firstName: event.target.value });
+        setFormData({ ...formData, email: event.target.value });
     }
     
 
@@ -59,7 +59,7 @@ function ClientSignup() {
         
 
         const formdata = new FormData();
-        formdata.append('username', formData.UserName);
+        formdata.append('username', formData.email);
         
         formdata.append('password', formData.password);
 
@@ -84,12 +84,15 @@ function ClientSignup() {
         formdata.append('password', formData.password);
         
 
-        axios.post('http://localhost:5000/api/worker/register', formdata, {
+        axios.post('http://localhost:5000/api/admin/login', formdata, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
         })
-            .then(res => console.log("An eror", res))
+            .then(res =>{ 
+                console.log("An eror", res)
+                localStorage.setItem('admin', JSON.stringify(res.data));
+            })
             .catch(err => console.log(err));
     }
 

@@ -1,0 +1,11 @@
+.main{
+    display: flex;
+}
+
+.leftPanel{
+    width: 20%;
+    background-color: white;
+}
+.rightPanel{
+    width: 80%;
+}

@@ -5,7 +5,7 @@ import { width } from '@mui/system';
 import './Card.css'
 
 
-function BasicExample() {
+function TaskCard() {
   return (
     <>
     <div className='Container'>
@@ -27,4 +27,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default TaskCard;

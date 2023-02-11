@@ -1,0 +1,52 @@
+.box{
+    width: 100%;
+    /* background-color: aqua; */
+    height: 250px;
+    padding: 10px;
+}
+.card{
+    width: 97%;
+    background-color: rgb(255, 255, 255);
+    height: 91%;
+    border: 2px solid rgb(179, 179, 179);
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.leftImage{
+    /* background-color: brown; */
+    height: 100%;;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+}
+.IdImage{
+    width: 90%;
+    height: 95%;
+}
+.rightContent{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 80%;
+    text-align: left;
+}
+.floor1{
+    display: flex;
+}
+.fields{
+    padding-left:3%;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.individualFiels{
+    margin: 0px;
+}
+.buttonsContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+.controlButton{
+    padding-left: 2px;
+    padding-right: 10px;
+}

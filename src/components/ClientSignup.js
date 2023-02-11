@@ -139,7 +139,9 @@ function ClientSignup() {
                 'Content-Type': 'multipart/form-data',
             },
         })
-            .then(res => console.log("An eror", res))
+            .then(res => {
+                console.log("Successful!", res)
+            })
             .catch(err => console.log(err));
     }
 
