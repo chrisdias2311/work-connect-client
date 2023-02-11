@@ -24,11 +24,20 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { checkboxClasses } from '@mui/material';
 
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+
 function ClientSignup() {
 
-   
+
 
     const navigate = useNavigate();
+    const [electricianCheck, setElectricianCheck] = useState('');
+    const [plumberCheck, setPlumberCheck] = useState('');
+    const [painterCheck, setPainterChack] = useState('');
+    const [carpenterCheck, setcarpenterCheck] = useState('');
+    const [masoncheck, setMasoncheck] = useState('');
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -44,9 +53,9 @@ function ClientSignup() {
 
     // const dispatch = useDispatch();
 
-    const handleEmailChange = (event) => {
-        setFormData({ ...formData, email: event.target.value });
-    }
+    // const handleEmailChange = (event) => {
+    //     setFormData({ ...formData, email: event.target.value });
+    // }
     const handleFirstNameChange = (event) => {
         setFormData({ ...formData, firstName: event.target.value });
     }
@@ -58,6 +67,46 @@ function ClientSignup() {
     }
 
     // expertise function
+    const handleElectricianCheck = (event) => {
+        if(electricianCheck===''){
+            setElectricianCheck('Electrician ')
+        }else{
+            setElectricianCheck('')
+        }
+        
+    }
+    const handlePlumberCheck = (event) => {
+        if(plumberCheck===''){
+            setPlumberCheck('Plumber ')
+        }else{
+            setPlumberCheck('')
+        }
+    }
+    const handlePainterChange = (event) => {
+        if(painterCheck===''){
+            setPainterChack('Painter ')
+        }else{
+            setPlumberCheck('')
+        }
+    }
+    const handleCarpenterCheck = (event) => {
+        if(carpenterCheck===''){
+            setcarpenterCheck('Carpenter ')
+        }else{
+            setcarpenterCheck('')
+        }
+    }
+    const handleMasoncheck = (event) => {
+        if(masoncheck===''){
+            setMasoncheck('Mason ')
+        }else{
+            setMasoncheck('')
+        }
+    }
+    
+    
+
+
 
 
     const handlePasswordChange = (event) => {
@@ -71,10 +120,10 @@ function ClientSignup() {
         setImageUpload(true);
     }
 
-
-    const submitSignupForm = (e) => {
+    const testsubmit = (e) => {
         e.preventDefault();
         console.log("Signup called");
+        const exp = electricianCheck + plumberCheck + painterCheck + carpenterCheck + masoncheck;
 
         const formdata = new FormData();
         formdata.append('firstname', formData.firstName);
@@ -82,6 +131,36 @@ function ClientSignup() {
         formdata.append('phone', formData.phone);
         formdata.append('password', formData.password);
         formdata.append('file', formData.image);
+        formdata.append('expertise', exp);
+
+
+        console.log("The Expertise", exp);
+        
+
+        // axios.post('http://localhost:5000/api/worker/register', formdata, {
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data',
+        //     },
+        // })
+        //     .then(res => console.log("An eror", res))
+        //     .catch(err => console.log(err));
+    }
+
+
+
+
+    const submitSignupForm = (e) => {
+        e.preventDefault();
+        console.log("Signup called");
+        const exp = electricianCheck + plumberCheck + painterCheck + carpenterCheck + masoncheck;
+
+        const formdata = new FormData();
+        formdata.append('firstname', formData.firstName);
+        formdata.append('lastname', formData.lastName);
+        formdata.append('phone', formData.phone);
+        formdata.append('password', formData.password);
+        formdata.append('file', formData.image);
+        formdata.append('expertise', exp);
 
         axios.post('http://localhost:5000/api/worker/register', formdata, {
             headers: {
@@ -113,9 +192,12 @@ function ClientSignup() {
                     </div>
 
                     <div className='inputField'>
-                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" label="Electrian" />
-                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" label="Electrian"/>
-                        <input type="checkbox" className='inputField' fullWidth id="outlined-basic" value={formData.expertise} variant="outlined" label="Electrian"/>
+                        <h5>Select Expertise</h5>
+                        <FormControlLabel onClick={handleElectricianCheck} control={<Checkbox />} label="Electrician"/>
+                        <FormControlLabel onClick={handlePlumberCheck} control={<Checkbox />} label="Plumber"/>
+                        <FormControlLabel onClick={handlePainterChange} control={<Checkbox />} label="Painter"/>
+                        <FormControlLabel onClick={handleCarpenterCheck} control={<Checkbox />} label="Carpenter"/>
+                        <FormControlLabel onClick={handleMasoncheck} control={<Checkbox />} label="Mason"/>
                     </div>
 
                     <div className='inputField'>
@@ -139,7 +221,7 @@ function ClientSignup() {
 
                     {
                         imageUpload ?
-                        <Alert severity="success">{formData.image.name}</Alert>
+                            <Alert severity="success">{formData.image.name}</Alert>
                             :
                             <div></div>
                     }
