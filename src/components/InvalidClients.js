@@ -5,7 +5,7 @@ import axios from "axios";
 // import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
-import UserCard from "./InvalidClient";
+import InvalidClientCard from "./InvalidClientCard";
 import "./InvalidClients.css";
 
 function InvalidClients() {
@@ -48,7 +48,7 @@ function InvalidClients() {
                 <div className="rightPanel">
                     {
                         users.length > 0 ? users.map((item, index) =>
-                            <UserCard
+                            <InvalidClientCard
                               clientId={item._id}
                               firstname={item.firstname}
                               lastname={item.lastname}

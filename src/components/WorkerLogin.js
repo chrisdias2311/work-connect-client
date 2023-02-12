@@ -25,18 +25,18 @@ import Select from '@mui/material/Select';
 
 function ClientLogin() {
 
-   
+
 
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        
+
         phone: '',
-        
+
         password: '',
 
     });
-    
+
 
     // const dispatch = useDispatch();
 
@@ -46,19 +46,19 @@ function ClientLogin() {
     const handleEmailChange = (event) => {
         setFormData({ ...formData, email: event.target.value });
     }
-    
+
     const handlePhoneChange = (event) => {
         setFormData({ ...formData, phone: event.target.value });
     }
 
 
-    
+
 
 
     const handlePasswordChange = (event) => {
         setFormData({ ...formData, password: event.target.value });
     }
-    
+
 
     // const handleSubmit = (event) => {
     //     event.preventDefault();
@@ -100,25 +100,31 @@ function ClientLogin() {
     // }
 
 
-    const submitSignupForm = (e) => {
-        e.preventDefault();
-        console.log("Signup called");
+    const submitLoginForm = (e) => {
+        if (formData.phone && formData.password) {
+            e.preventDefault();
+            console.log("Login called");
 
-        const formdata = new FormData();
-        formdata.append('email', formData.email);
-        formdata.append('firstname', formData.firstName);
-        formdata.append('lastname', formData.lastName);
-        formdata.append('phone', formData.phone);
-        formdata.append('password', formData.password);
-        formdata.append('file', formData.image);
+            const formdata = new FormData();
+            formdata.append('phone', formData.phone);
+            formdata.append('password', formData.password);
 
-        axios.post('http://localhost:5000/api/client/register', formdata, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
-            .then(res => console.log("An eror", res))
-            .catch(err => console.log(err));
+            axios.post('http://localhost:5000/api/worker/login', formdata, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(res => {
+                    localStorage.setItem('worker', JSON.stringify(res.data));
+                    alert("Logged in successfully!")
+                    console.log("successful", res)
+                })
+                .catch(err => console.log(err));
+        } else {
+            alert("Please fill all the fields")
+        }
+
+
     }
 
     return (
@@ -129,7 +135,7 @@ function ClientLogin() {
             /> */}
 
             <div className='signup_container'>
-                <h1>Worker-Login</h1>
+                <h1>Login as worker</h1>
 
                 <form >
 
@@ -146,8 +152,8 @@ function ClientLogin() {
 
                 </form>
 
-                
-                <Button variant="contained" onClick={submitSignupForm}>
+
+                <Button variant="contained" onClick={submitLoginForm}>
                     Login
                 </Button>
             </div>

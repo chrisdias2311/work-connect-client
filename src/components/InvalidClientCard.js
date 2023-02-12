@@ -3,15 +3,30 @@ import './UserCard.css';
 // import Logo from '../Logo.jpeg';
 // import IdCard from '../IdCard.jpeg';
 import Button from '@mui/material/Button';
+import axios from 'axios';
 
-function InvalidClient({ clientId, email, firstname, lastname, phone, year, dept, div, idimage }) {
+function InvalidClientCard({ clientId, email, firstname, lastname, phone, year, dept, div, idimage }) {
 
     const registerClient = (cid) => {
-        console.log("This is the client ID to be registered", cid)
+        axios.put(`http://localhost:5000/api/client/validateclient/${cid}`, {
+            validity: 'Yes'
+        })
+        .then(res => {
+            alert("Client Registered Successfully")
+            console.log("Successful", res)
+        })
+            .catch(err => console.log(err));
     }
 
     const declineClient = (cid) => {
-        console.log("This is the client ID to be Declined", cid)
+        axios.put(`http://localhost:5000/api/client/validateclient/${cid}`, {
+            validity: 'Decline'
+        })
+            .then(res => {
+                alert("Client Registration Declined")
+                console.log("Successful", res)
+            })
+            .catch(err => console.log(err));
     }
 
 
@@ -32,7 +47,7 @@ function InvalidClient({ clientId, email, firstname, lastname, phone, year, dept
                             <Button onClick={() => registerClient(clientId)} className='controlButton' variant="contained">Register</Button>
                         </div>
                         <div className='controlButton'>
-                            <Button  onClick={() => declineClient(clientId)} className='controlButtons' variant="contained" color='error'>Decline</Button>
+                            <Button onClick={() => declineClient(clientId)} className='controlButtons' variant="contained" color='error'>Decline</Button>
                         </div>
                     </div>
 
@@ -42,4 +57,4 @@ function InvalidClient({ clientId, email, firstname, lastname, phone, year, dept
     )
 }
 
-export default InvalidClient;
+export default InvalidClientCard;

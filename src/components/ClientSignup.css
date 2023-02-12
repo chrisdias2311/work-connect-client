@@ -78,3 +78,11 @@ imageUpload_Button:howver{
     margin-top: 10px;
     border-color: darkgray;
 }
+
+.inputDate{
+    margin: 8px;
+    display: flex;
+}
+.inputForm{
+    text-align: center;
+}

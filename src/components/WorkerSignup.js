@@ -68,43 +68,43 @@ function ClientSignup() {
 
     // expertise function
     const handleElectricianCheck = (event) => {
-        if(electricianCheck===''){
+        if (electricianCheck === '') {
             setElectricianCheck('Electrician ')
-        }else{
+        } else {
             setElectricianCheck('')
         }
-        
+
     }
     const handlePlumberCheck = (event) => {
-        if(plumberCheck===''){
+        if (plumberCheck === '') {
             setPlumberCheck('Plumber ')
-        }else{
+        } else {
             setPlumberCheck('')
         }
     }
     const handlePainterChange = (event) => {
-        if(painterCheck===''){
+        if (painterCheck === '') {
             setPainterChack('Painter ')
-        }else{
+        } else {
             setPlumberCheck('')
         }
     }
     const handleCarpenterCheck = (event) => {
-        if(carpenterCheck===''){
+        if (carpenterCheck === '') {
             setcarpenterCheck('Carpenter ')
-        }else{
+        } else {
             setcarpenterCheck('')
         }
     }
     const handleMasoncheck = (event) => {
-        if(masoncheck===''){
+        if (masoncheck === '') {
             setMasoncheck('Mason ')
-        }else{
+        } else {
             setMasoncheck('')
         }
     }
-    
-    
+
+
 
 
 
@@ -135,7 +135,7 @@ function ClientSignup() {
 
 
         console.log("The Expertise", exp);
-        
+
 
         // axios.post('http://localhost:5000/api/worker/register', formdata, {
         //     headers: {
@@ -150,32 +150,42 @@ function ClientSignup() {
 
 
     const submitSignupForm = (e) => {
-        e.preventDefault();
-        console.log("Signup called");
-        const exp = electricianCheck + plumberCheck + painterCheck + carpenterCheck + masoncheck;
+        if (formData.firstName && formData.lastName && formData.phone && formData.password && formData.image ) {
+            e.preventDefault();
+            console.log("Signup called");
+            const exp = electricianCheck + plumberCheck + painterCheck + carpenterCheck + masoncheck;
 
-        const formdata = new FormData();
-        formdata.append('firstname', formData.firstName);
-        formdata.append('lastname', formData.lastName);
-        formdata.append('phone', formData.phone);
-        formdata.append('password', formData.password);
-        formdata.append('file', formData.image);
-        formdata.append('expertise', exp);
+            const formdata = new FormData();
+            formdata.append('firstname', formData.firstName);
+            formdata.append('lastname', formData.lastName);
+            formdata.append('phone', formData.phone);
+            formdata.append('password', formData.password);
+            formdata.append('file', formData.image);
+            formdata.append('expertise', exp);
 
-        axios.post('http://localhost:5000/api/worker/register', formdata, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
-            .then(res => console.log("An eror", res))
-            .catch(err => console.log(err));
+            axios.post('http://localhost:5000/api/worker/register', formdata, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
+                .then(res => {
+                    alert("Your Registration request was sent successfully! Please wait while we validate your account")
+                    console.log("Successful!", res)
+                })
+                .catch(err => console.log(err));
+        }else{
+            alert("Please fill all the fields!")
+            console.log(formData);
+        }
+
+
     }
 
     return (
         <div className='signup'>
 
             <div className='signup_container'>
-                <h1>Sign-up</h1>
+                <h1>Register as worker</h1>
 
                 <form >
 
@@ -193,11 +203,11 @@ function ClientSignup() {
 
                     <div className='inputField'>
                         <h5>Select Expertise</h5>
-                        <FormControlLabel onClick={handleElectricianCheck} control={<Checkbox />} label="Electrician"/>
-                        <FormControlLabel onClick={handlePlumberCheck} control={<Checkbox />} label="Plumber"/>
-                        <FormControlLabel onClick={handlePainterChange} control={<Checkbox />} label="Painter"/>
-                        <FormControlLabel onClick={handleCarpenterCheck} control={<Checkbox />} label="Carpenter"/>
-                        <FormControlLabel onClick={handleMasoncheck} control={<Checkbox />} label="Mason"/>
+                        <FormControlLabel onClick={handleElectricianCheck} control={<Checkbox />} label="Electrician" />
+                        <FormControlLabel onClick={handlePlumberCheck} control={<Checkbox />} label="Plumber" />
+                        <FormControlLabel onClick={handlePainterChange} control={<Checkbox />} label="Painter" />
+                        <FormControlLabel onClick={handleCarpenterCheck} control={<Checkbox />} label="Carpenter" />
+                        <FormControlLabel onClick={handleMasoncheck} control={<Checkbox />} label="Mason" />
                     </div>
 
                     <div className='inputField'>

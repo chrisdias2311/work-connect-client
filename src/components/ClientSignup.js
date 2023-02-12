@@ -25,7 +25,7 @@ import Select from '@mui/material/Select';
 
 function ClientSignup() {
 
-   
+
 
     const navigate = useNavigate();
 
@@ -123,26 +123,35 @@ function ClientSignup() {
 
 
     const submitSignupForm = (e) => {
-        e.preventDefault();
-        console.log("Signup called");
+        if (formData.email && formData.firstName && formData.lastName && formData.phone && formData.password && formData.image) {
+            e.preventDefault();
+            console.log("Signup called");
 
-        const formdata = new FormData();
-        formdata.append('email', formData.email);
-        formdata.append('firstname', formData.firstName);
-        formdata.append('lastname', formData.lastName);
-        formdata.append('phone', formData.phone);
-        formdata.append('password', formData.password);
-        formdata.append('file', formData.image);
+            const formdata = new FormData();
+            formdata.append('email', formData.email);
+            formdata.append('firstname', formData.firstName);
+            formdata.append('lastname', formData.lastName);
+            formdata.append('phone', formData.phone);
+            formdata.append('password', formData.password);
+            formdata.append('file', formData.image);
 
-        axios.post('http://localhost:5000/api/client/register', formdata, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
-            .then(res => {
-                console.log("Successful!", res)
+            axios.post('http://localhost:5000/api/client/register', formdata, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
             })
-            .catch(err => console.log(err));
+                .then(res => {
+                    alert("Your Registration request was sent successfully! Please wait while we validate your account")
+                    console.log("Successful!", res)
+                })
+                .catch(err => console.log(err));
+        }else{
+            alert('Please fill all the fields')
+        }
+
+
+
+
     }
 
     return (
@@ -153,7 +162,7 @@ function ClientSignup() {
             /> */}
 
             <div className='signup_container'>
-                <h1>Sign-up</h1>
+                <h1>Register as Client</h1>
 
                 <form >
 
@@ -208,7 +217,7 @@ function ClientSignup() {
 
                     {
                         imageUpload ?
-                        <Alert severity="success">{formData.image.name}</Alert>
+                            <Alert severity="success">{formData.image.name}</Alert>
                             :
                             <div></div>
                     }

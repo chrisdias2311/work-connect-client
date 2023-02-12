@@ -25,7 +25,7 @@ import Select from '@mui/material/Select';
 
 function ClientLogin() {
 
-   
+
 
     const navigate = useNavigate();
 
@@ -120,23 +120,32 @@ function ClientLogin() {
 
 
     const submitSignupForm = (e) => {
-        e.preventDefault();
-        console.log("Signup called");
+        if (formData.email && formData.password) {
+            e.preventDefault();
+            console.log("Signup called");
 
-        const formdata = new FormData();
-        formdata.append('email', formData.email);
-        
-        formdata.append('phone', formData.phone);
-        formdata.append('password', formData.password);
-        
+            const formdata = new FormData();
+            formdata.append('email', formData.email);
+            formdata.append('password', formData.password);
 
-        axios.post('http://localhost:5000/api/client/register', formdata, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
-            .then(res => console.log("An eror", res))
-            .catch(err => console.log(err));
+
+            axios.post('http://localhost:5000/api/client/login', formdata, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(res => {
+                    localStorage.setItem('client', JSON.stringify(res.data));
+                    alert("Logged In Successfully!")
+                    console.log("An eror", res)
+                })
+                .catch(err => console.log(err));
+        }else{
+            alert("Please Fill all the fields!")
+        }
+
+
+
     }
 
     return (
@@ -147,7 +156,7 @@ function ClientLogin() {
             /> */}
 
             <div className='signup_container'>
-                <h1>Client-Login</h1>
+                <h1>Login as client</h1>
 
                 <form >
 
@@ -155,9 +164,9 @@ function ClientLogin() {
                         <TextField className='inputField' fullWidth id="outlined-basic" value={formData.email} onChange={handleEmailChange} label="Email" variant="outlined" />
                     </div>
 
-                    <div className='inputField'>
+                    {/* <div className='inputField'>
                         <TextField className='inputField' fullWidth id="outlined-basic" value={formData.phone} onChange={handlePhoneChange} label="Phone-no" variant="outlined" />
-                    </div>
+                    </div> */}
 
                     <div className='inputField'>
                         <TextField fullWidth type="password" className='inputField' id="outlined-basic" value={formData.password} onChange={handlePasswordChange} label="Password" variant="outlined" />

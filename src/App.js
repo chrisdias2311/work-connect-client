@@ -8,6 +8,8 @@ import WorkerDashboard from './components/WorkerDashboard';
 import CreateAdmin from './components/CreateAdmin';
 import InvalidClients from './components/InvalidClients';
 import InvalidWorkers from './components/InvalidWorkers';
+import CreateWork from './components/CreateWork';
+import MyOffers from './components/MyOffers';
 // import InvalidUsers from './components/InvalidClients';
 
 // import Home from './components/Home';
@@ -19,6 +21,8 @@ import { BrowserRouter, Switch, Routes, Route } from "react-router-dom";
 // import Footer from './components/Footer';
 
 function App() {
+  
+
   return (
     <BrowserRouter>
       <Routes>
@@ -31,6 +35,8 @@ function App() {
         <Route path='/createadmin' element={<><CreateAdmin /></>}></Route>
         <Route path='/invalidclients' element={<><InvalidClients /></>}></Route>
         <Route path='/invalidworkers' element={<><InvalidWorkers /></>}></Route>
+        <Route path='/creatework' element={<><CreateWork /></>}></Route>
+        <Route path='/myoffers' element={<><MyOffers /></>}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -3,10 +3,21 @@ import './CreateAdmin.css'
 import { useState } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import TextField from '@mui/material/TextField';
 
 function CreateAdmin() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // const status = JSON.parse(localStorage.getItem('client')).validity;
+
+        if (!localStorage.getItem('admin')) {
+            navigate("/");
+        }
+    }, []);
 
     const [formData, setFormData] = useState({
         pid: '',
