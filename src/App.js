@@ -12,7 +12,7 @@ import CreateWork from './components/CreateWork';
 import MyOffers from './components/MyOffers';
 // import InvalidUsers from './components/InvalidClients';
 
-// import Home from './components/Home';
+import Home from './components/Home';
 // import Navbar from './components/NavigationBar'
 // import Card from './components/TaskCard'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,6 +26,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+      <Route path='/' element={<><Home/></>}></Route>
         <Route path='/workerdashboard' element={<><WorkerDashboard /></>}></Route>
         <Route path='/clientsignup' element={<><ClientSignup /></>}></Route>
         <Route path='/clientlogin' element={<><ClientLogin /></>}></Route>
