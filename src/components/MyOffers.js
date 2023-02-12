@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MyOffers.css'
+import OfferCard from './OfferCard';
 
 function MyOffers() {
     const [clientWorks, setclientWorks] = useState('');
@@ -61,6 +62,17 @@ function MyOffers() {
     return (
         <div>
             <button onClick={getData}>GetData</button>
+            {
+                bids.length > 0 ? bids.map((item, index) =>
+                    <OfferCard
+                        workId={item.workId}
+                        workerId={item.workerId}
+                        name={item.workerName}
+                        expertise={item.workerExpertise}
+                        price={item.price}
+                    />
+                ) : <h1>No Data found</h1>
+            }
 
             {/* Display all the bids */}
         </div>

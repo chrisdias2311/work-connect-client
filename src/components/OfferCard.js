@@ -1,40 +1,41 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './OfferCard.css'
 
-const OfferCard = () => {
-  return (
-    <>
-        <div className='main_card'>
-        <form> 
-            <div className='Worker-Details'>
-            <div className='input-field'>
-                <TextField name='title'  label="Name" disabled id="outlined-read-only-input" InputProps={{
-            readOnly: true,
-          }} />
-            </div>
-            <div className='input-field'>
-                <TextField  label="Expertise"  name='content' disabled id="outlined-read-only-input" InputProps={{
-            readOnly: true,
-          }} />
-            </div>
-            <div className='input-field'>
-                <TextField type='text' name='price' label="Wages" variant="outlined" disabled id="outlined-read-only-input" InputProps={{
-            readOnly: true,
-          }} />
-            </div>
-            <div className='input-field'>
-                <TextField  name='category' multiline maxRows={5} label="Loaction" variant="outlined" disabled id="outlined-read-only-input" InputProps={{
-            readOnly: true,
-          }} />
-            </div>
-            </div>
-        </form>
-    </div>
-    </>
-  )
+const OfferCard = ({ workId, workerId, name, expertise, price }) => {
+    const acceptBid = (workID, workerID) => {
+
+        const formdata = new FormData();
+        formdata.append('Cemail', formData.email);
+        formdata.append('Cname', formData.firstName);
+        formdata.append('Cphone', formData.lastName);
+        formdata.append('Wphone', formData.phone);
+        formdata.append('Wname', formData.password);
+        formdata.append('location', formData.image);
+    }
+
+
+    return (
+        <div className='Container'>
+            <Card style={{ width: '20rem' }}>
+                <Card.Body>
+                    <Card.Title>Name: {name}</Card.Title>
+                    <Card.Text>
+                        Expertise: {expertise}
+                    </Card.Text>
+                    <Card.Text>
+                        Price: ${price}
+                    </Card.Text>
+
+                    <br></br>
+                    <Button onClick={() => acceptBid(workId, workerId)} variant="primary" >Accept Bid</Button>
+                    {/* <PlumbingIcon style={{ marginLeft: '125px' }} /> */}
+                </Card.Body>
+            </Card>
+        </div>
+    )
 }
 
 export default OfferCard
