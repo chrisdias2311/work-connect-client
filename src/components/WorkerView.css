@@ -1,0 +1,31 @@
+
+
+.card1 {
+    text-align: left;
+    width: 500px;
+    height: 150px;
+    background-color: aliceblue;
+    border: 2px solid grey;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #888888;
+    margin: 20px;
+  }
+
+  .card2 {
+    text-align: left;
+    width: 500px;
+    height: 400px;
+    background-color: lightgrey;
+    border: 2px solid grey;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #888888;
+    margin: 20px;
+  }
+
+  .SubC{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(229, 233, 188);
+  }
+
+ 

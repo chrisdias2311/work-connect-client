@@ -1,0 +1,31 @@
+body {
+    
+}
+
+.Container1 {
+
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 40px;
+    height: 500px;
+    width: 400px;
+    border-radius: 10px;
+    border-color: black;
+    border: 1px solid;
+    background-color: azure;
+}
+
+.Containers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Header {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.Name {
+    padding-left: 2%;
+}
