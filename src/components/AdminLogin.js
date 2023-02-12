@@ -45,53 +45,52 @@ function ClientSignup() {
     const handleUserNameChange = (event) => {
         setFormData({ ...formData, email: event.target.value });
     }
-    
-
-    
     const handlePasswordChange = (event) => {
         setFormData({ ...formData, password: event.target.value });
     }
     
 
-    const testsubmit = (e) => {
-        e.preventDefault();
-        console.log("Signup called");
+    // const testsubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log("Signup called");
         
 
-        const formdata = new FormData();
-        formdata.append('username', formData.email);
+    //     const formdata = new FormData();
+    //     formdata.append('username', formData.email);
         
-        formdata.append('password', formData.password);
+    //     formdata.append('password', formData.password);
 
-        // axios.post('http://localhost:5000/api/worker/register', formdata, {
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data',
-        //     },
-        // })
-        //     .then(res => console.log("An eror", res))
-        //     .catch(err => console.log(err));
-    }
+    //     // axios.post('http://localhost:5000/api/worker/register', formdata, {
+    //     //     headers: {
+    //     //         'Content-Type': 'multipart/form-data',
+    //     //     },
+    //     // })
+    //     //     .then(res => console.log("An eror", res))
+    //     //     .catch(err => console.log(err));
+    // }
 
 
 
 
     const submitSignupForm = (e) => {
         e.preventDefault();
-        console.log("Signup called");
+        console.log("Signup called", formData);
 
         const formdata = new FormData();
-        formdata.append('firstname', formData.UserName);
+        formdata.append('email', formData.email);
         formdata.append('password', formData.password);
         
 
         axios.post('http://localhost:5000/api/admin/login', formdata, {
             headers: {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'application/json',
             },
         })
             .then(res =>{ 
-                console.log("An eror", res)
                 localStorage.setItem('admin', JSON.stringify(res.data));
+                alert("You've been logged in successfully!")
+                console.log("Successful!", res.data)
+                // localStorage.setItem('admin', JSON.stringify(res.data));
             })
             .catch(err => console.log(err));
     }
@@ -105,7 +104,7 @@ function ClientSignup() {
                 <form >
 
                     <div className='inputField'>
-                        <TextField className='inputField' fullWidth id="outlined-basic" value={formData.UserName} onChange={handleUserNameChange} label="Username" variant="outlined" />
+                        <TextField className='inputField' fullWidth id="outlined-basic" value={formData.email} onChange={handleUserNameChange} label="Username" variant="outlined" />
                     </div>
                     <div className='inputField'>
                         <TextField fullWidth type="password" className='inputField' id="outlined-basic" value={formData.password} onChange={handlePasswordChange} label="Password" variant="outlined" />

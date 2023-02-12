@@ -18,11 +18,15 @@ function TaskCard({ workId, title, desc, category, date, location }) {
 
   const createBid = (workId) => {
     const workerId = JSON.parse(localStorage.getItem('worker'))._id;
+    const wname = JSON.parse(localStorage.getItem('worker')).firstname + " " + JSON.parse(localStorage.getItem('worker')).lastname;
+    const wexpertise = JSON.parse(localStorage.getItem('worker')).expertise
 
     const formdata = new FormData();
     formdata.append('workerid', workerId);
     formdata.append('workid', workId);
     formdata.append('price', bid);
+    formdata.append('name', wname);
+    formdata.append('expertise', wexpertise);
 
     axios.post('http://localhost:5000/api/bid/createbid', formdata, {
       headers: {
@@ -32,7 +36,6 @@ function TaskCard({ workId, title, desc, category, date, location }) {
       .then(res => {
         alert(res.data);
         console.log("This is the response", res.data);
-        localStorage.setItem('admin', JSON.stringify(res.data));
       })
       .catch(err =>
         console.log("This is the error", err),

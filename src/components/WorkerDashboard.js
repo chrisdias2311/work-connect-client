@@ -18,7 +18,7 @@ function WorkerDashboard() {
   useEffect(() => {
     const status = JSON.parse(localStorage.getItem('worker')).validity;
 
-    if (status !== "Yes") {
+    if (status!=='Yes') {
       navigate("/");
     } else {
       axios
