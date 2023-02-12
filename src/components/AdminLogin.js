@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./WorkerSignup.js";
+import './adminlogin.css'
 // import { useDispatch } from 'react-redux';
 // import { signUpUser } from '../redux/actions/formActions';
 // import { Connect } from 'react-redux';
@@ -99,7 +100,7 @@ function ClientSignup() {
         <div className='signup'>
 
             <div className='signup_container'>
-                <h1>Admin-Login</h1>
+                <h1 class="tit">Admin-Login</h1>
 
                 <form >
 
