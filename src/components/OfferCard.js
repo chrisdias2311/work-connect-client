@@ -7,13 +7,14 @@ import './OfferCard.css'
 const OfferCard = ({ workId, workerId, name, expertise, price }) => {
     const acceptBid = (workID, workerID) => {
 
-        const formdata = new FormData();
-        formdata.append('Cemail', formData.email);
-        formdata.append('Cname', formData.firstName);
-        formdata.append('Cphone', formData.lastName);
-        formdata.append('Wphone', formData.phone);
-        formdata.append('Wname', formData.password);
-        formdata.append('location', formData.image);
+
+        // const formdata = new FormData();
+        // formdata.append('Cemail', formData.email);
+        // formdata.append('Cname', formData.firstName);
+        // formdata.append('Cphone', formData.lastName);
+        // formdata.append('Wphone', formData.phone);
+        // formdata.append('Wname', formData.password);
+        // formdata.append('location', formData.image);
     }
 
 
